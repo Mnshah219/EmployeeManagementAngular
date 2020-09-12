@@ -1,0 +1,30 @@
+<h3 style="color: red" *ngIf="employeeService.errorMessage">
+  <b>{{ employeeService.errorMessage }}</b>
+</h3>
+<table class="table table-striped mt-2" *ngIf="!employeeService.errorMessage">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Email</th>
+      <th scope="col">Department</th>
+      <th scope="col">Operations</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employees; let i = index">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ employee.fname }}</td>
+      <td>{{ employee.lname }}</td>
+      <td>{{ employee.email }}</td>
+      <td>{{ employee.employeeDetail.department }}</td>
+      <td>
+        <button class="btn btn-primary">Update</button>
+        <button class="btn btn-danger ml-2" (click)="onDelete(i)">
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

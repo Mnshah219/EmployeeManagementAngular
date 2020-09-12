@@ -1,0 +1,8 @@
+.error {
+  color: red;
+  font-weight: bold;
+}
+
+input.ng-invalid.ng-touched select.ng-invalid.ng-touched {
+  border: 1px solid red;
+}

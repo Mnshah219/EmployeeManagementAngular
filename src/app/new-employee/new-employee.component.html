@@ -1,0 +1,159 @@
+<div *ngIf="isLoading"><h3>Loading....</h3></div>
+
+<div class="container" *ngIf="!isLoading">
+  <form #f="ngForm" (ngSubmit)="onCreate(f)">
+    <div class="form-group">
+      <label for="fname">First Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="fname"
+        ngModel
+        required
+        #fname="ngModel"
+        name="fname"
+      />
+    </div>
+    <p class="error" *ngIf="fname.touched && fname.invalid">
+      First Name is Required
+    </p>
+    <div class="form-group">
+      <label for="lname">Last Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="lname"
+        ngModel
+        name="lname"
+        #lname="ngModel"
+        required
+      />
+    </div>
+    <p class="error" *ngIf="lname.touched && lname.invalid">
+      Last Name is Required
+    </p>
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        ngModel
+        name="email"
+        #email="ngModel"
+        required
+        email
+      />
+    </div>
+    <p class="error" *ngIf="email.touched && email.invalid">
+      Please enter a valid email
+    </p>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        ngModel
+        name="password"
+        #password="ngModel"
+        required
+      />
+    </div>
+    <p class="error" *ngIf="password.touched && password.invalid">
+      Password Name is Required
+    </p>
+    <div class="form-group">
+      <label for="age">Age</label>
+      <input type="number" ngModel name="age" class="form-control" id="age" />
+    </div>
+    <div class="form-group">
+      <label for="gender">Gender</label>
+      <select
+        class="form-control"
+        id="gender"
+        ngModel
+        name="gender"
+        #gender="ngModel"
+        required
+      >
+        <option value="true">Male</option>
+        <option value="false">Female</option>
+      </select>
+    </div>
+
+    <p class="error" *ngIf="gender.touched && gender.invalid">
+      Gender is Required
+    </p>
+    <div class="form-group">
+      <label for="department">Department</label>
+      <select
+        class="form-control"
+        id="department"
+        ngModel
+        name="department"
+        #department="ngModel"
+        required
+      >
+        <option>Software</option>
+        <option>Accounts</option>
+        <option>Human Resources</option>
+        <option>Research & Development</option>
+        <option>Markketing</option>
+      </select>
+    </div>
+
+    <p class="error" *ngIf="department.touched && department.invalid">
+      Department is Required
+    </p>
+    <div class="form-group">
+      <label for="designation">Designation</label>
+      <input
+        type="text"
+        ngModel
+        name="designation"
+        class="form-control"
+        #designation="ngModel"
+        id="designation"
+        required
+      />
+    </div>
+    <p class="error" *ngIf="designation.touched && designation.invalid">
+      Designation is Required
+    </p>
+    <div class="form-group">
+      <label for="salary">Salary</label>
+      <input
+        type="number"
+        ngModel
+        name="salary"
+        class="form-control"
+        id="salary"
+      />
+    </div>
+    <div class="form-group">
+      <label for="joiningDate">Joining Date</label>
+      <input
+        type="date"
+        ngModel
+        name="joiningDate"
+        class="form-control"
+        id="joiningDate"
+      />
+    </div>
+    <div class="form-group">
+      <label for="leavingDate">Leaving Date</label>
+      <input
+        type="date"
+        ngModel
+        name="leavingDate"
+        class="form-control"
+        id="leavingDate"
+      />
+    </div>
+
+    <button class="btn btn-primary" [disabled]="f.invalid">
+      Create new Employee
+    </button>
+  </form>
+</div>

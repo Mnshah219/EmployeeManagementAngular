@@ -1,0 +1,14 @@
+<div
+  class="bg-light"
+  *ngIf="user"
+  style="display: flex; justify-content: space-between"
+>
+  <button
+    class="btn btn-success mt-2"
+    *ngIf="user.role === 'admin'"
+    routerLink="/create"
+  >
+    Add new Employee
+  </button>
+  <button class="btn btn-danger mt-2v" (click)="onLogOut()">LogOut</button>
+</div>
