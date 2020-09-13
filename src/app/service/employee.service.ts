@@ -28,6 +28,16 @@ export class EmployeeService {
     );
   }
 
+  onUpdateEmployee(index: number, employee: Employee) {
+    return this.http.post('http://localhost:8080/api/employee', employee).pipe(
+      tap(() => {
+        this.employees[index] = employee;
+        console.log(this.employees);
+        this.employeeSub.next(this.getEmployees());
+      })
+    );
+  }
+
   onDeleteEmployee(index) {
     return this.http
       .delete('http://localhost:8080/api/delete/' + this.employees[index].id)

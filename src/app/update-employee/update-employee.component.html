@@ -1,14 +1,14 @@
 <div *ngIf="isLoading"><h3>Loading....</h3></div>
 
 <div class="container" *ngIf="!isLoading">
-  <form #f="ngForm" (ngSubmit)="onCreate(f)">
+  <form #f="ngForm" (ngSubmit)="onUpdate(f)">
     <div class="form-group">
       <label for="fname">First Name</label>
       <input
         type="text"
         class="form-control"
         id="fname"
-        ngModel
+        [ngModel]="employee.fname"
         required
         #fname="ngModel"
         name="fname"
@@ -23,7 +23,7 @@
         type="text"
         class="form-control"
         id="lname"
-        ngModel
+        [ngModel]="employee.lname"
         name="lname"
         #lname="ngModel"
         required
@@ -38,7 +38,7 @@
         type="email"
         class="form-control"
         id="email"
-        ngModel
+        [ngModel]="employee.email"
         name="email"
         #email="ngModel"
         required
@@ -54,25 +54,31 @@
         type="password"
         class="form-control"
         id="password"
-        ngModel
+        [ngModel]="employee.password"
         name="password"
         #password="ngModel"
         required
       />
     </div>
     <p class="error" *ngIf="password.touched && password.invalid">
-      Password Name is Required
+      Enter old password or update to a new password
     </p>
     <div class="form-group">
       <label for="age">Age</label>
-      <input type="number" ngModel name="age" class="form-control" id="age" />
+      <input
+        type="number"
+        [ngModel]="employee.age"
+        name="age"
+        class="form-control"
+        id="age"
+      />
     </div>
     <div class="form-group">
       <label for="gender">Gender</label>
       <select
         class="form-control"
         id="gender"
-        ngModel
+        [ngModel]="employee.gender"
         name="gender"
         #gender="ngModel"
         required
@@ -90,7 +96,7 @@
       <select
         class="form-control"
         id="department"
-        ngModel
+        [ngModel]="employee.employeeDetail.department"
         name="department"
         #department="ngModel"
         required
@@ -110,7 +116,7 @@
       <label for="designation">Designation</label>
       <input
         type="text"
-        ngModel
+        [ngModel]="employee.employeeDetail.designation"
         name="designation"
         class="form-control"
         #designation="ngModel"
@@ -125,7 +131,7 @@
       <label for="salary">Salary</label>
       <input
         type="number"
-        ngModel
+        [ngModel]="employee.employeeDetail.salary"
         name="salary"
         class="form-control"
         id="salary"
@@ -135,7 +141,7 @@
       <label for="joiningDate">Joining Date</label>
       <input
         type="date"
-        ngModel
+        [ngModel]="employee.employeeDetail.joiningDate"
         name="joiningDate"
         class="form-control"
         id="joiningDate"
@@ -145,7 +151,7 @@
       <label for="leavingDate">Leaving Date</label>
       <input
         type="date"
-        ngModel
+        [ngModel]="employee.employeeDetail.leavingDate"
         name="leavingDate"
         class="form-control"
         id="leavingDate"
@@ -153,7 +159,7 @@
     </div>
 
     <button class="btn btn-primary" [disabled]="f.invalid">
-      Create new Employee
+      Update Employee
     </button>
     <button class="btn btn-danger ml-2" routerLink="/dashboard">Cancel</button>
   </form>

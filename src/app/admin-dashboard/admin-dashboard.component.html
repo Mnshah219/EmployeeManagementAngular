@@ -1,6 +1,10 @@
 <h3 style="color: red" *ngIf="employeeService.errorMessage">
   <b>{{ employeeService.errorMessage }}</b>
 </h3>
+<button class="btn btn-success mt-2" routerLink="/create">
+  Add new Employee
+</button>
+
 <table class="table table-striped mt-2" *ngIf="!employeeService.errorMessage">
   <thead>
     <tr>
@@ -20,7 +24,9 @@
       <td>{{ employee.email }}</td>
       <td>{{ employee.employeeDetail.department }}</td>
       <td>
-        <button class="btn btn-primary">Update</button>
+        <button class="btn btn-primary" [routerLink]="['/update', i]">
+          Update
+        </button>
         <button class="btn btn-danger ml-2" (click)="onDelete(i)">
           Delete
         </button>

@@ -7,6 +7,7 @@ export class Employee {
   email: string;
   password: string;
   age: number;
+  gender: boolean;
   employeeDetail: EmployeeDetails;
 
   constructor(
@@ -16,6 +17,7 @@ export class Employee {
     email: string,
     password: string,
     age: number,
+    gender: boolean,
     employeeDetail: EmployeeDetails
   ) {
     this.id = id;
@@ -24,6 +26,7 @@ export class Employee {
     this.email = email;
     this.password = password;
     this.age = age;
+    this.gender = gender;
     this.employeeDetail = employeeDetail;
   }
 }

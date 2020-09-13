@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { AuthInterceptorService } from './service/auth-interceptor.service';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { NewEmployeeComponent } from './new-employee/new-employee.component';
+import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { NewEmployeeComponent } from './new-employee/new-employee.component';
     HeaderComponent,
     AdminDashboardComponent,
     NewEmployeeComponent,
+    UpdateEmployeeComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [

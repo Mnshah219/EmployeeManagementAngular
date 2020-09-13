@@ -43,6 +43,7 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscription = this.employeeService.employeeSub.subscribe(
       (employees) => {
+        console.log('from dashboard', this.employees);
         this.employees = employees;
       }
     );

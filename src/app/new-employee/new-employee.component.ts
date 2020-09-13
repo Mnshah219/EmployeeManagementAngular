@@ -55,6 +55,8 @@ export class NewEmployeeComponent implements OnInit {
     this.leavingDate = form.value.leavingDate
       ? new Date(form.value.leavingDate)
       : null;
+    this.department = form.value.department;
+    this.designation = form.value.designation;
     const employeeDetails: EmployeeDetails = new EmployeeDetails(
       this.department,
       this.designation,
@@ -69,12 +71,13 @@ export class NewEmployeeComponent implements OnInit {
       this.email,
       this.password,
       this.age,
+      this.gender,
       employeeDetails
     );
     this.employeeService.onCreateEmployee(employee).subscribe(
       (response) => {
         this.isLoading = false;
-        alert('New Uer Created!');
+        alert('New User Created!');
         this.router.navigate(['/dashboard']);
       },
       (error) => {
