@@ -4,7 +4,13 @@
 <button class="btn btn-success mt-2" routerLink="/create">
   Add new Employee
 </button>
-
+<input
+  class="form-control mt-4 mb-2"
+  type="text"
+  placeholder="Search"
+  aria-label="Search"
+  [(ngModel)]="search"
+/>
 <table class="table table-striped mt-2" *ngIf="!employeeService.errorMessage">
   <thead>
     <tr>
@@ -17,20 +23,29 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let employee of employees; let i = index">
+    <tr
+      *ngFor="
+        let employee of employeesToDisplay
+          | paginate: { itemsPerPage: count, currentPage: p };
+        let i = index
+      "
+    >
       <th scope="row">{{ i + 1 }}</th>
       <td>{{ employee.fname }}</td>
       <td>{{ employee.lname }}</td>
       <td>{{ employee.email }}</td>
       <td>{{ employee.employeeDetail.department }}</td>
       <td>
-        <button class="btn btn-primary" [routerLink]="['/update', i]">
+        <button class="btn btn-primary" [routerLink]="['/update', employee.id]">
           Update
         </button>
-        <button class="btn btn-danger ml-2" (click)="onDelete(i)">
+        <button class="btn btn-danger ml-2" (click)="onDelete(employee.id)">
           Delete
         </button>
       </td>
     </tr>
   </tbody>
 </table>
+<div class="text-right">
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>

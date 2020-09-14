@@ -16,7 +16,9 @@ export class LoginComponent implements OnInit {
     this.isLoading = false;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('login component created');
+  }
   onSubmit(form: NgForm) {
     const email: string = form.value.email;
     const password: string = form.value.password;

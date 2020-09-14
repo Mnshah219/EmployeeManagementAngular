@@ -9,8 +9,8 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { AuthInterceptorService } from './service/auth-interceptor.service';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
-import { NewEmployeeComponent } from './new-employee/new-employee.component';
-import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
+import { CreateOrUpdateEmployeeComponent } from './create-or-update-employee/create-or-update-employee.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -19,10 +19,15 @@ import { UpdateEmployeeComponent } from './update-employee/update-employee.compo
     HomeComponent,
     HeaderComponent,
     AdminDashboardComponent,
-    NewEmployeeComponent,
-    UpdateEmployeeComponent,
+    CreateOrUpdateEmployeeComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    NgxPaginationModule,
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

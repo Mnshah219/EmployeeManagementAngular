@@ -3,9 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
-import { NewEmployeeComponent } from './new-employee/new-employee.component';
-import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
 import { AuthGuardService } from './service/auth-guard.service';
+import { CreateOrUpdateEmployeeComponent } from './create-or-update-employee/create-or-update-employee.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -18,12 +17,12 @@ const routes: Routes = [
   {
     path: 'create',
     canActivate: [AuthGuardService],
-    component: NewEmployeeComponent,
+    component: CreateOrUpdateEmployeeComponent,
   },
   {
     path: 'update/:id',
     canActivate: [AuthGuardService],
-    component: UpdateEmployeeComponent,
+    component: CreateOrUpdateEmployeeComponent,
   },
 ];
 

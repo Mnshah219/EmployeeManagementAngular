@@ -24,11 +24,18 @@ export class AuthGuardService implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    if (state.url === '/dashboard' && this.user.role === 'admin') return true;
-    else if (state.url === '/home' && this.user.role === 'user') return true;
-    else if (state.url === '/create' && this.user.role == 'admin') return true;
-    else if (state.url.includes('/update') && this.user.role == 'admin')
+    console.log('in auth guard');
+    console.log(state.url);
+    console.log(this.user);
+    if (
+      (state.url.includes('/dashboard') ||
+        state.url.includes('/create') ||
+        state.url.includes('/update')) &&
+      this.user.role === 'admin'
+    ) {
+      console.log('will access dashboard');
       return true;
+    } else if (state.url === '/home' && this.user.role === 'user') return true;
     else return false;
   }
 }
