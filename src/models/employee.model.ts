@@ -6,7 +6,7 @@ export class Employee {
   lname: string;
   email: string;
   password: string;
-  age: number;
+  dob: Date;
   gender: boolean;
   employeeDetail: EmployeeDetails;
 
@@ -16,7 +16,7 @@ export class Employee {
     lname: string,
     email: string,
     password: string,
-    age: number,
+    dob: Date,
     gender: boolean,
     employeeDetail: EmployeeDetails
   ) {
@@ -25,7 +25,7 @@ export class Employee {
     this.lname = lname;
     this.email = email;
     this.password = password;
-    this.age = age;
+    this.dob = dob;
     this.gender = gender;
     this.employeeDetail = employeeDetail;
   }

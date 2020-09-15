@@ -89,11 +89,21 @@ export class CreateOrUpdateEmployeeComponent implements OnInit {
       }
     } else if (joiningDate) {
       if (joiningDate > currentDate) {
+        alert('Joining date must be on or before today');
         this.isLoading = false;
         return;
       }
     } else if (leavingDate) {
       if (leavingDate > currentDate) {
+        alert('Leaving date must be on or before today');
+        this.isLoading = false;
+        return;
+      }
+    }
+
+    if (form.value.dob) {
+      if (new Date(form.value.dob) > new Date()) {
+        alert('Date of birth must be before today');
         this.isLoading = false;
         return;
       }
@@ -101,7 +111,7 @@ export class CreateOrUpdateEmployeeComponent implements OnInit {
 
     this.employee.fname = form.value.fname;
     this.employee.lname = form.value.lname;
-    this.employee.age = Number(form.value.age);
+    this.employee.dob = form.value.dob ? new Date(form.value.dob) : null;
     this.employee.gender = Boolean(form.value.gender);
     this.employee.email = form.value.email;
     this.employee.password = form.value.password;
@@ -137,6 +147,7 @@ export class CreateOrUpdateEmployeeComponent implements OnInit {
   }
 
   getMonth(month: number) {
+    month += 1;
     return String(month).length === 1 ? '0' + String(month) : String(month);
   }
   getDate(date: number) {
@@ -169,6 +180,20 @@ export class CreateOrUpdateEmployeeComponent implements OnInit {
     } else return null;
   }
 
+  get dob() {
+    let jd = new Date(this.employee.dob);
+    console.log(this.employee);
+    if (jd) {
+      return (
+        jd.getFullYear() +
+        '-' +
+        this.getMonth(jd.getMonth()) +
+        '-' +
+        this.getDate(jd.getDate())
+      );
+    } else return null;
+  }
+
   onUpdate(form: NgForm) {
     this.isLoading = true;
     let joiningDate = new Date(form.value.joiningDate);
@@ -186,18 +211,28 @@ export class CreateOrUpdateEmployeeComponent implements OnInit {
       }
     } else if (joiningDate) {
       if (joiningDate > currentDate) {
+        alert('Joining date must be on or before today');
         this.isLoading = false;
         return;
       }
     } else if (leavingDate) {
       if (leavingDate > currentDate) {
+        alert('Leaving date must be on or before today');
         this.isLoading = false;
         return;
       }
     }
+    if (form.value.dob) {
+      if (new Date(form.value.dob) > new Date()) {
+        alert('Date of birth must be before today');
+        this.isLoading = false;
+        return;
+      }
+    }
+
     this.employee.fname = form.value.fname;
     this.employee.lname = form.value.lname;
-    this.employee.age = Number(form.value.age);
+    this.employee.dob = form.value.dob ? new Date(form.value.dob) : null;
     this.employee.gender = Boolean(form.value.gender);
     this.employee.email = form.value.email;
     this.employee.password = form.value.password;

@@ -19,6 +19,13 @@ export class HomeComponent implements OnInit {
     } else return null;
   }
 
+  get dob() {
+    if (this.loggedInEmployee.dob) {
+      let dt: Date = new Date(this.loggedInEmployee.dob);
+      return dt.getDate() + '/' + dt.getMonth() + '/' + dt.getFullYear();
+    } else return null;
+  }
+
   get leavingDate() {
     if (this.loggedInEmployee.employeeDetail.leavingDate) {
       let dt: Date = new Date(this.loggedInEmployee.employeeDetail.leavingDate);

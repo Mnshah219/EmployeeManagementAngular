@@ -14,7 +14,7 @@ export class AuthService {
   public subject: BehaviorSubject<User>;
   private expirationTimer;
   constructor(private http: HttpClient, private router: Router) {
-    this.subject = new BehaviorSubject<User>(null);
+    this.subject = new BehaviorSubject<User>(new User(null, null, null, null));
   }
 
   login(email: string, password: string) {
